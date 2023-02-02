@@ -1,0 +1,134 @@
+Script started on 2023-02-01 14:38:30-08:00 [TERM="xterm-256color" TTY="/dev/pts
+/0" COLUMNS="56" LINES="24"]
+sf@StefanPC:~/Documents/CS421/Project 1$ bash runner.sh
+ls
+inputfile  runner.sh  sfprog1.c  sfprog2.c  sfprog3.c
+makefile   sfprog1    sfprog2    sfprog3    typescript
+cat runner.sh
+echo "ls"
+ls
+echo "cat runner.sh"
+cat runner.sh
+echo "cat sfprog1.c"
+cat sfprog1.c
+echo "cc -o sfprog1 sfprog1.c"
+gcc -o sfprog1 sfprog1.c
+echo "./sfprog1 4 6"
+./sfprog1 4 6
+echo "cat sfprog2.c"
+cat sfprog2.c
+echo "gcc -o sfprog2 sfprog2.c"
+gcc -o sfprog2 sfprog2.c
+echo "./sfprog2"
+./sfprog2
+echo "rm sfprog3"
+rm sfprog3
+echo "ls"
+ls
+echo "cat sfprog3.c"
+cat sfprog3.c
+echo "cat inputfile"
+cat inputfile
+echo "cat makefile"
+cat makefile
+echo "make"
+make
+echo "ls"
+ls
+echo "./sfprog3"
+./sfprog3
+cat sfprog1.c
+#include <stdio.h>
+#include <stdlib.h> 
+
+int main(int argc, char* argv[]) {
+//printf("hello, world!\n");
+//printf("%d", argc);
+
+int arg1 = atoi(argv[1]);
+int arg2 = atoi(argv[2]);
+int product = arg1 * arg2;
+printf("First parameter is %d\nSecond Parameter is %d\n", arg1, arg2);
+printf("Product is %d\n", product);
+}
+cc -o sfprog1 sfprog1.c
+./sfprog1 4 6
+First parameter is 4
+Second Parameter is 6
+Product is 24
+cat sfprog2.c
+#include <stdio.h>
+
+int main() {
+
+int arg1, arg2;
+
+printf("Please enter first parameter: ");
+scanf("%d", &arg1);
+printf("Please enter second parameter: ");
+scanf("%d", &arg2);
+int product = arg1 * arg2;
+
+printf("First parameter is %d\nSecond Parameter is %d\n", arg1, arg2);
+printf("Product is %d\n", product);
+
+return 0;
+}
+gcc -o sfprog2 sfprog2.c
+./sfprog2
+Please enter first parameter: 4
+Please enter second parameter: 6
+First parameter is 4
+Second Parameter is 6
+Product is 24
+rm sfprog3
+ls
+inputfile  runner.sh  sfprog1.c  sfprog2.c  typescript
+makefile   sfprog1    sfprog2    sfprog3.c
+cat sfprog3.c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+FILE * myFile;
+myFile = fopen("inputfile","r");
+
+int arg1, arg2;
+
+printf("Reading first parameter: ");
+
+fscanf(myFile, "%d", &arg1);
+printf("%d\n", arg1);
+
+printf("Reading second parameter: ");
+
+fscanf(myFile, "%d", &arg2);
+printf("%d\n", arg2);
+
+int product = arg1 * arg2;
+
+printf("Product is %d\n", product);
+fclose(myFile);
+
+return 0;
+}
+cat inputfile
+9
+11
+cat makefile
+sfprog3 : sfprog3.c
+gcc -o sfprog3 sfprog3.c
+make
+gcc -o sfprog3 sfprog3.c
+ls
+inputfile  runner.sh  sfprog1.c  sfprog2.c  sfprog3.c
+makefile   sfprog1    sfprog2    sfprog3    typescript
+./sfprog3
+Reading first parameter: 9
+Reading second parameter: 11
+Product is 99
+sf@StefanPC:~/Documents/CS421/Project 1$ exit
+exit
+
+Script done on 2023-02-01 14:38:52-08:00 [COMMAND_EXIT_CODE="0"]
